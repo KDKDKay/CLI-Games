@@ -1,0 +1,164 @@
+import random
+import time
+
+#This is coin toss game
+def coin_guess(guess, bet):
+  if bet <= 0:
+    print("Your bet must be greater than 0!")
+    print("-------------")
+  num = random.randint(1, 2)
+  if guess == "Heads" and num == 1:
+    print("Ok let's play coin toss!")
+    print("Looks like you called Heads.")
+    print("-------------")
+    print("The coin flip was Heads")
+    print("-------------")
+    print("You won " + str(bet))
+    print("*************")
+    return bet
+  elif guess == "Tails" and num == 2:
+    print("Ok let's play coin toss! Looks like you called Tails")
+    print("-------------")
+    print("The coin flip was Tails")
+    print("-------------")
+    print("You won " + str(bet))
+    print("*************")
+    return bet
+  elif guess == "Heads" and num == 2:
+    print("Ok let's play coin toss! Looks like you called Heads")
+    print("-------------")
+    print("The coin flip was Tails")
+    print("-------------")
+    print("You lost " + str(bet))
+    print("*************")
+    return -bet
+  elif guess == "Tails" and num == 1:
+    print("Ok let's play coin toss! Looks like you called Tails")
+    print("-------------")
+    print("The coin flip was Heads")
+    print("-------------")
+    print("You lost " + str(bet))
+    print("*************")
+    return -bet
+
+
+#This is Cho Han
+def cho_han(guess2, bet):
+  if bet <= 0:
+    print("Your bet must be over 0!")
+  die1 = random.randint(1,6)
+  die2 = random.randint(1,6)
+  roll = die1 + die2
+  if guess2 == "Even" and roll%2==0:
+    print("So you want to play Cho Han? You called Even")
+    print("-------------")
+    print("The die rolls were " + str(die1) + " and " + str(die2) + " so it's Even")
+    print("-------------")
+    print("You won " + str(bet))
+    print("*************")
+    return bet
+  elif guess2 == "Odd" and roll%2!=0:
+    print("So you want to play Cho Han? You called Odd")
+    print("-------------")
+    print("The die rolls were " + str(die1) + " and " + str(die2) + " so it's Odd")
+    print("-------------")
+    print("You won " + str(bet))
+    print("*************")
+    return bet
+  elif guess2 == "Even" and roll%2!=0:
+    print("So you want to play Cho Han? You called Even")
+    print("-------------")
+    print("The die rolls were " + str(die1) + " and " + str(die2) + " so it's Odd")
+    print("-------------")
+    print("You lost " + str(bet))
+    print("*************")
+    return -bet
+  elif guess2 == "Odd" and roll%2==0:
+    print("So you want to play Cho Han? You called Odd")
+    print("-------------")
+    print("The die rolls were " + str(die1) + " and " + str(die2) + " so it's Even")
+    print("-------------")
+    print("You lost " + str(bet))
+    print("*************")
+    return -bet
+
+#cho_han("Odd", 10)
+
+#card game without dictionary - use the dictionary one for a better game
+def card_game(bet):
+  money = 100
+  cards = ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09', 'S10', 'S11', 'S12', 'S13', 'C01', 'C02', 'C03', 'C04', 'C05', 'C06', 'C07', 'C08', 'C09', 'C10', 'C11', 'C12', 'C13', 'H01', 'H02', 'H03', 'H04', 'H05', 'H06', 'H07', 'H08', 'H09', 'H10', 'H11', 'H12', 'H13', 'D01', 'D02', 'D03', 'D04', 'D05', 'D06', 'D07', 'D08', 'D09', 'D10', 'D11', 'D12', 'D13']
+  x = random.randint(0,51)
+  person = cards[x]
+  cards.pop(x)
+  y = random.randint(0,50)
+  comp = cards[y]
+  print("So you want to play cards?") 
+  print("Pick one!")
+  print("You selected " + str(person) + ".")
+  print("I picked " + str(comp) + ".")
+  card1 = int(person[-2:]) 
+  card2 = int(comp[-2:])
+
+  if card1 > card2:
+    print("You won " + str(bet) + "!")
+    money += bet
+    print(money)
+  elif card2 > card1:
+    print("You lost " + str(bet) + "!")
+    money -= bet
+    print(money)
+  else:
+    print("We tied!")
+    print(money)
+
+#card_game(5)
+
+
+#card game with dictionary - use this one
+def card_dic(bet):
+  money = 100
+  cards = [{'S01':'Ace of Spades'}, {'S02':'2 of Spades'}, {'S03': '3 of Spades'}, {'S04': '4 of Spades'}, {'S05': '5 of Spades'}, {'S06': '6 of Spades'}, {'S07': '7 of Spades'}, {'S08': '8 of Spades'}, {'S09': '9 of Spades'}, {'S10': '10 of Spades'}, {'S11': 'Jack of Spades'}, {'S12': 'Queen of Spades'}, {'S13': 'King of Spades'}, {'C01': 'Ace of Clubs'}, {'C02': '2 of Clubs'}, {'C03': '3 of Clubs'}, {'C04': '4 of Clubs'}, {'C05': '5 of Clubs'}, {'C06': '6 of Clubs'}, {'C07': '7 of Clubs'}, {'C08': '8 of Clubs'}, {'C09': '9 of Clubs'}, {'C10': '10 of Clubs'}, {'C11': 'Jack of Clubs'}, {'C12': 'Queen of Clubs'}, {'C13': 'King of Clubs'}, {'H01': 'Ace of Hearts'}, {'H02': '2 of Hearts'}, {'H03': '3 of Hearts'}, {'H04': '4 of Hearts'}, {'H05': '5 of Hearts'}, {'H06': '6 of Hearts'}, {'H07': '7 of Hearts'}, {'H08': '8 of Hearts'}, {'H09': '9 of Hearts'}, {'H10': '10 of Hearts'}, {'H11': 'Jack of Hearts'}, {'H12': 'Queen of Hearts'}, {'H13': 'King of Hearts'}, {'D01': 'Ace of Diamonds'}, {'D02': '2 of Diamonds'}, {'D03': '3 of Diamonds'}, {'D04': '4 of Diamods'}, {'D05': '5 of Diamonds'}, {'D06': '6 of Diamonds'}, {'D07': '7 of Diamonds'}, {'D08': '8 of Diamonds'}, {'D09': '9 of Diamonds'}, {'D10': '10 of Diamonds'}, {'D11': 'Jack of Diamonds'}, {'D12': 'Queen of Diamonds'}, {'D13': 'King of Diamonds'}]
+  x = random.randint(0,51)
+  person = cards[x]
+  for i in person:
+    a= i
+  cards.pop(x)
+  y = random.randint(0,50)
+  comp = cards[y]
+  for j in comp:
+    b = j
+  print("So you want to play cards?") 
+  print("-------------")
+  print("Pick one!")
+  print("-------------")
+  print("You selected the " + str(person[a]) + ".")
+  print("-------------")
+  print("I picked the " + str(comp[b]) + ".")
+  print("-------------")
+  card1 = int(a[-2:]) 
+  card2 = int(b[-2:])
+
+  if card1 > card2:
+    print("You won " + str(bet) + "!")
+    return bet
+    print("You now have " + str(money))
+  elif card2 > card1:
+    print("You lost " + str(bet) + "!")
+    return -bet
+    print("You now have " + str(money))
+  else:
+    print("We tied!")
+    print("You now have " + str(money))
+    return 0
+
+welcome = "So you want to play a game of chance? You have a pot of £100. Let's go!"
+
+end = "Thanks for playing!"
+
+print(welcome)
+money = 100
+money += coin_guess("Heads", 10)
+money +=cho_han("Odd", 30)
+money += card_dic(30)
+print("You now have a pot of " + str(money))
